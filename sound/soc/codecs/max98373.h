@@ -221,4 +221,7 @@ struct max98373_priv {
 };
 
 extern const struct snd_soc_component_driver soc_codec_dev_max98373_sdw;
+extern void max98373_reset(struct max98373_priv *max98373, struct device *dev);
+extern void max98373_slot_config(struct device *dev,
+	struct max98373_priv *max98373);
 #endif
