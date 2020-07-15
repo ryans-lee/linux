@@ -27,11 +27,11 @@ static struct snd_soc_codec_conf max_98373_codec_conf[] = {
 };
 
 struct snd_soc_dai_link_component max_98373_components[] = {
-	{  /* For Left */
+	{  /* For Right */
 		.name = MAX_98373_DEV0_NAME,
 		.dai_name = MAX_98373_CODEC_DAI,
 	},
-	{  /* For Right */
+	{  /* For Left */
 		.name = MAX_98373_DEV1_NAME,
 		.dai_name = MAX_98373_CODEC_DAI,
 	},
@@ -47,11 +47,11 @@ static int max98373_hw_params(struct snd_pcm_substream *substream,
 	for_each_rtd_codec_dais(rtd, j, codec_dai) {
 		if (!strcmp(codec_dai->component->name, MAX_98373_DEV0_NAME)) {
 			/* DEV0 tdm slot configuration */
-			snd_soc_dai_set_tdm_slot(codec_dai, 0x30, 3, 8, 16);
+			snd_soc_dai_set_tdm_slot(codec_dai, 0x3, 0x1, 8, 32);
 		}
 		if (!strcmp(codec_dai->component->name, MAX_98373_DEV1_NAME)) {
 			/* DEV1 tdm slot configuration */
-			snd_soc_dai_set_tdm_slot(codec_dai, 0xC0, 3, 8, 16);
+			snd_soc_dai_set_tdm_slot(codec_dai, 0xC, 0x2, 8, 32);
 		}
 	}
 	return 0;
